@@ -424,11 +424,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7430162694865981681, guid: e3e1a831f99a77045a035c94c9309e87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.79
+      value: 20.64
       objectReference: {fileID: 0}
     - target: {fileID: 7430162694865981681, guid: e3e1a831f99a77045a035c94c9309e87, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.76
       objectReference: {fileID: 0}
     - target: {fileID: 7430162694865981681, guid: e3e1a831f99a77045a035c94c9309e87, type: 3}
       propertyPath: m_LocalRotation.w
@@ -463,6 +463,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3e1a831f99a77045a035c94c9309e87, type: 3}
+--- !u!1 &427585282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2620324459734652449, guid: e3e1a831f99a77045a035c94c9309e87, type: 3}
+  m_PrefabInstance: {fileID: 427585281}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &571078776 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6132112914862085344, guid: 8a270cc94254f5e45946958d43907da1, type: 3}
@@ -948,6 +953,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 395724595128070780, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
+      propertyPath: controlDeNave
+      value: 
+      objectReference: {fileID: 7554287047036273790}
     - target: {fileID: 688155873169278797, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
       propertyPath: m_Name
       value: Barra_Vida
@@ -1032,10 +1041,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5753541232136665200, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786577592004792990, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
+      propertyPath: controlDeNave
+      value: 
+      objectReference: {fileID: 7554287047036273790}
     - target: {fileID: 7583890086033201685, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
       propertyPath: controlDeNave
       value: 
       objectReference: {fileID: 7554287047036273790}
+    - target: {fileID: 8061277733116940659, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2016,6 +2037,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1571507567746303490, guid: a84edc9dbc597cf41b5091479871d544, type: 3}
+      propertyPath: energia
+      value: 
+      objectReference: {fileID: 427585282}
     - target: {fileID: 4116738408034410992, guid: a84edc9dbc597cf41b5091479871d544, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.85

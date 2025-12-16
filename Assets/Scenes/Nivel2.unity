@@ -725,6 +725,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terreno
       objectReference: {fileID: 0}
+    - target: {fileID: 2690957564096909965, guid: 0e4aed42b68f00d44b5d3bdaa8be882a, type: 3}
+      propertyPath: m_TagString
+      value: Segura
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1414,6 +1418,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002588330}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2049214934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2620324459734652449, guid: e3e1a831f99a77045a035c94c9309e87, type: 3}
+  m_PrefabInstance: {fileID: 890234858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1159672443413369286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1607,6 +1616,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1571507567746303490, guid: a84edc9dbc597cf41b5091479871d544, type: 3}
+      propertyPath: energia
+      value: 
+      objectReference: {fileID: 2049214934}
+    - target: {fileID: 1571507567746303490, guid: a84edc9dbc597cf41b5091479871d544, type: 3}
+      propertyPath: sonidoMuerte
+      value: 
+      objectReference: {fileID: 8300000, guid: 1fb53713aa433074084c6e9c581d77ae, type: 3}
     - target: {fileID: 4116738408034410992, guid: a84edc9dbc597cf41b5091479871d544, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.85
