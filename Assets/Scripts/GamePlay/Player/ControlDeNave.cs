@@ -1,11 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
+using System;
 
 public class ControlDeNave : MonoBehaviour
 {
-    Rigidbody rigidbody;
-    AudioSource audioSource;
+    Rigidbody rbody;
+    [Header ("AudioSources")]
+    [SerializeField] AudioSource audioSFX;
+    [SerializeField] AudioSource audioPropulsion;
+
+    private bool colisionesActivas;
 
     public enum EstadoJugador
     {
@@ -20,8 +25,8 @@ public class ControlDeNave : MonoBehaviour
     private int nivelActual;
 
     [SerializeField] public float vida = 5.0f;
-    [SerializeField] public float combustible = 200.0f;
-    [SerializeField] public float consumoCombustibleSegundo = 10.0f;
+    [SerializeField] public float combustible = 10.0f;
+    [SerializeField] public float consumoCombustibleSegundo = 0.2f;
 
     [SerializeField] private float velocidadPropulsion = 400.0f;
     [SerializeField] private float velocidadRotacion = 100.0f;
@@ -29,14 +34,23 @@ public class ControlDeNave : MonoBehaviour
     [SerializeField] private float tiempoMuerte = 3.0f;
     [SerializeField] private float tiempoGanar = 2.0f;
 
+    [Header ("Sonidos")]
     [SerializeField] AudioClip sonidoPropulsion;
     [SerializeField] AudioClip sonidoVictoria;
     [SerializeField] AudioClip sonidoMuerte;
     [SerializeField] AudioClip sonidoChoque;
+    [SerializeField] AudioClip sonidoEnergia;
+    [SerializeField] AudioClip sonidoCuracion;
 
+
+    [Header ("Particulas")]
     [SerializeField] ParticleSystem partMuerte;
     [SerializeField] ParticleSystem partGanar;
     [SerializeField] ParticleSystem partPropulsion;
+
+    [Header ("Para destruir")]
+    [SerializeField] private GameObject nave;
+    [SerializeField] private GameObject energia;
     // Start is called before the first frame update
 
 
@@ -44,8 +58,7 @@ public class ControlDeNave : MonoBehaviour
     void Start()
     {
         DynamicGI.UpdateEnvironment();
-        rigidbody = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
+        rbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -58,7 +71,7 @@ public class ControlDeNave : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (estadoActual != EstadoJugador.Vivo)
+        if (estadoActual != EstadoJugador.Vivo && colisionesActivas == false)
         {
             return;
         }
@@ -69,15 +82,20 @@ public class ControlDeNave : MonoBehaviour
                 print("segura");
                 break;
             case "Combustible":
-                print("Se ha tomado Combustible");
-                //implementar combustible
+                llenarCombustible();
                 break;
             case "Final":
                 ProcesarFinal();
                 break;
             case "Reparacion":
-                vida++;
+                audioSFX.PlayOneShot(sonidoCuracion);
+                vida = 5;
                 break;
+            case "kamikaze":
+                vida = 1;
+                ProcesarGolpe();
+                break;
+
             default:
 
                 ProcesarGolpe();
@@ -86,19 +104,31 @@ public class ControlDeNave : MonoBehaviour
         }
     }
 
+    private void llenarCombustible()
+    {
+        combustible = 10;
+        energia.SetActive(false);
+        audioPropulsion.Stop();
+        audioSFX.PlayOneShot(sonidoEnergia);
+    }
+
     private void Propulsion()
     {
-        if (combustible <= 0f)
+        if (combustible <= 0f && estadoActual != EstadoJugador.SinCombustible)
         {
             estadoActual = EstadoJugador.SinCombustible;
-            audioSource.Stop();
+
+            audioSFX.Stop();
+            audioPropulsion.Stop();
             partPropulsion.Stop();
+
+            Invoke("Muerte", tiempoMuerte);
             return;
         }
 
-        rigidbody.freezeRotation = true;
+        rbody.freezeRotation = true;
         
-        rigidbody.AddRelativeForce(Vector3.up * Time.deltaTime * velocidadPropulsion);
+        rbody.AddRelativeForce(Vector3.up * Time.deltaTime * velocidadPropulsion);
         combustible -= consumoCombustibleSegundo * Time.deltaTime;
 
         if (!partPropulsion.isPlaying)
@@ -106,21 +136,37 @@ public class ControlDeNave : MonoBehaviour
             partPropulsion.Play();
         }
 
-        if (!audioSource.isPlaying)
+        if (!audioPropulsion.isPlaying)
         {
-            audioSource.PlayOneShot(sonidoPropulsion);
+            audioPropulsion.PlayOneShot(sonidoPropulsion);
         }
+    }
+
+    private void ProcesarFinal()
+    {
+        audioSFX.Stop();
+        audioPropulsion.Stop();
+        audioSFX.PlayOneShot(sonidoVictoria);
+        partGanar.Play();
+        estadoActual = EstadoJugador.NivelCompleto;
+        Invoke("PasarNivel", tiempoGanar);
     }
 
     private void PasarNivel()
     {
-
+        int cantidadEscenas= SceneManager.sceneCountInBuildSettings;
         nivelActual = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(nivelActual + 1);
+        int siguienteEscena = (nivelActual+1) % cantidadEscenas;
 
+        if (siguienteEscena == cantidadEscenas)
+        {
+            siguienteEscena = 0;
+        }
+
+        SceneManager.LoadScene(siguienteEscena);
     } 
 
-    private void Muerte()
+    private void ReiniciarNivel()
     {
         nivelActual = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(nivelActual);
@@ -143,14 +189,7 @@ public class ControlDeNave : MonoBehaviour
             transform.rotation = rotarDerecha;*/
         }
     }
-    private void ProcesarFinal()
-    {
-        audioSource.Stop();
-        audioSource.PlayOneShot(sonidoVictoria);
-        partGanar.Play();
-        estadoActual = EstadoJugador.NivelCompleto;
-        Invoke("PasarNivel", tiempoGanar);
-    }
+
 
     private void procesarInput()
     {
@@ -158,6 +197,21 @@ public class ControlDeNave : MonoBehaviour
         {
             ProcesarPropulsion();
             ProcesarRotacion();
+        }
+
+        procesarInputDeDesarrollador();
+
+    }
+
+    private void procesarInputDeDesarrollador()
+    {
+        if (Input.GetKey(KeyCode.L)) 
+        {
+            PasarNivel();
+        }
+        else if (!Input.GetKey(KeyCode.B))
+        {
+            colisionesActivas = !colisionesActivas;
         }
 
     }
@@ -171,27 +225,35 @@ public class ControlDeNave : MonoBehaviour
         }
         else
         {
-            audioSource.Stop();
+            audioPropulsion.Stop();
             partPropulsion.Stop();
         }
-        rigidbody.freezeRotation = false;
+        rbody.freezeRotation = false;
 
 
     }
     private void ProcesarGolpe()
     {
-        audioSource.Stop();
+        audioSFX.Stop();
+        audioPropulsion.Stop(); 
         vida--;
         if (vida == 0)
         {
-            audioSource.PlayOneShot(sonidoMuerte);
-            partMuerte.Play();
-            estadoActual = EstadoJugador.Muerto;
-            Invoke("Muerte", tiempoMuerte);
-        } 
+            Muerte();
+        }
         else 
         {
-            audioSource.PlayOneShot(sonidoChoque);
+            audioSFX.PlayOneShot(sonidoChoque);
         }
+    }
+
+    private void Muerte()
+    {
+        audioSFX.PlayOneShot(sonidoMuerte);
+        partMuerte.Play();
+        estadoActual = EstadoJugador.Muerto;
+        partPropulsion.Stop();
+        nave.SetActive(false);
+        Invoke("ReiniciarNivel", tiempoMuerte);
     }
 }
