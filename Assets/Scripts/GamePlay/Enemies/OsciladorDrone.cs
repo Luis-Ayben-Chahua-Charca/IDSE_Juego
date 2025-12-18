@@ -22,12 +22,10 @@ public class OsciladorDrone : MonoBehaviour
         {
 
             float ciclos = Time.time / periodo;
-            print(periodo);
 
             float tau = Mathf.PI * 2;
             float funcionSeno = Mathf.Sin(tau * ciclos);
             desplazamiento = funcionSeno * 0.5f + 0.5f;
-            print(desplazamiento);
 
             transform.position = posInicial + dirDesplazamiento * desplazamiento;
         }

@@ -10,6 +10,8 @@ public class ControlDeNave : MonoBehaviour
     [SerializeField] AudioSource audioSFX;
     [SerializeField] AudioSource audioPropulsion;
 
+    private bool colisionesActivas;
+
     public enum EstadoJugador
     {
         Vivo,
@@ -69,7 +71,7 @@ public class ControlDeNave : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (estadoActual != EstadoJugador.Vivo)
+        if (estadoActual != EstadoJugador.Vivo && colisionesActivas == false)
         {
             return;
         }
@@ -90,7 +92,8 @@ public class ControlDeNave : MonoBehaviour
                 vida = 5;
                 break;
             case "kamikaze":
-                Invoke("Muerte", tiempoMuerte);
+                vida = 1;
+                ProcesarGolpe();
                 break;
 
             default:
@@ -139,6 +142,16 @@ public class ControlDeNave : MonoBehaviour
         }
     }
 
+    private void ProcesarFinal()
+    {
+        audioSFX.Stop();
+        audioPropulsion.Stop();
+        audioSFX.PlayOneShot(sonidoVictoria);
+        partGanar.Play();
+        estadoActual = EstadoJugador.NivelCompleto;
+        Invoke("PasarNivel", tiempoGanar);
+    }
+
     private void PasarNivel()
     {
         int cantidadEscenas= SceneManager.sceneCountInBuildSettings;
@@ -176,15 +189,7 @@ public class ControlDeNave : MonoBehaviour
             transform.rotation = rotarDerecha;*/
         }
     }
-    private void ProcesarFinal()
-    {
-        audioSFX.Stop();
-        audioPropulsion.Stop();
-        audioSFX.PlayOneShot(sonidoVictoria);
-        partGanar.Play();
-        estadoActual = EstadoJugador.NivelCompleto;
-        Invoke("PasarNivel", tiempoGanar);
-    }
+
 
     private void procesarInput()
     {
@@ -192,6 +197,21 @@ public class ControlDeNave : MonoBehaviour
         {
             ProcesarPropulsion();
             ProcesarRotacion();
+        }
+
+        procesarInputDeDesarrollador();
+
+    }
+
+    private void procesarInputDeDesarrollador()
+    {
+        if (Input.GetKey(KeyCode.L)) 
+        {
+            PasarNivel();
+        }
+        else if (!Input.GetKey(KeyCode.B))
+        {
+            colisionesActivas = !colisionesActivas;
         }
 
     }

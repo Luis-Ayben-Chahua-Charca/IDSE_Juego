@@ -312,8 +312,8 @@ MonoBehaviour:
   tiempoGanar: 5
   sonidoPropulsion: {fileID: 8300000, guid: ff0c65c4d560bd440a0e4c86856c2e2c, type: 3}
   sonidoVictoria: {fileID: 8300000, guid: 89413bd01ec70814ba7081abc83bf415, type: 3}
-  sonidoMuerte: {fileID: 8300000, guid: 5eb73870f69acbd49a7b388928d842c8, type: 3}
-  sonidoChoque: {fileID: 8300000, guid: f2b903d4834c68e40a1834d4cc66ac9e, type: 3}
+  sonidoMuerte: {fileID: 8300000, guid: 1fb53713aa433074084c6e9c581d77ae, type: 3}
+  sonidoChoque: {fileID: 8300000, guid: f0d5ee576aa9d5a468e2af3a41bf5493, type: 3}
   sonidoEnergia: {fileID: 8300000, guid: 5eb73870f69acbd49a7b388928d842c8, type: 3}
   sonidoCuracion: {fileID: 8300000, guid: 42c9dbb90d6ed4c46950609e62172478, type: 3}
   partMuerte: {fileID: 2278135588119465164}

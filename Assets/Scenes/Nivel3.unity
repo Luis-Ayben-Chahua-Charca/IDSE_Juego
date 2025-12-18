@@ -603,6 +603,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6631645026603990232, guid: 04c832faca511d04f9ed8e10f5480966, type: 3}
+      propertyPath: culturaData
+      value: 
+      objectReference: {fileID: 11400000, guid: ce65096fd2f6eaf40a4c05eb36aa7c49, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -704,6 +708,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3218810443744147630, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
+      propertyPath: nave
+      value: 
+      objectReference: {fileID: 7554287047036273790}
     - target: {fileID: 5786577592004792990, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
       propertyPath: controlDeNave
       value: 
@@ -1652,10 +1660,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plat_Datos
       objectReference: {fileID: 0}
+    - target: {fileID: 3017053837948012289, guid: 8bf8c06a9a7238443ba27343e7eb46bf, type: 3}
+      propertyPath: m_TagString
+      value: Segura
+      objectReference: {fileID: 0}
     - target: {fileID: 4743643034060365302, guid: 8bf8c06a9a7238443ba27343e7eb46bf, type: 3}
       propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6299263738738548368, guid: 8bf8c06a9a7238443ba27343e7eb46bf, type: 3}
+      propertyPath: culturaData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2088a286049e4fe4a9f2c00da3c2200a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1236,6 +1236,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3218810443744147630, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
+      propertyPath: nave
+      value: 
+      objectReference: {fileID: 870825312}
     - target: {fileID: 5012658058369413103, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
       propertyPath: m_FillAmount
       value: 1
@@ -1244,6 +1248,10 @@ PrefabInstance:
       propertyPath: controlDeNave
       value: 
       objectReference: {fileID: 870825312}
+    - target: {fileID: 6960252317993344103, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8061277733116940659, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1451,10 +1459,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plat_Llegada
       objectReference: {fileID: 0}
-    - target: {fileID: 2503322452275963209, guid: 04c832faca511d04f9ed8e10f5480966, type: 3}
-      propertyPath: m_TagString
-      value: Final
-      objectReference: {fileID: 0}
     - target: {fileID: 3023681360198598643, guid: 04c832faca511d04f9ed8e10f5480966, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -1495,6 +1499,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6631645026603990232, guid: 04c832faca511d04f9ed8e10f5480966, type: 3}
+      propertyPath: culturaData
+      value: 
+      objectReference: {fileID: 11400000, guid: dd0c25a07344e6240b02c18dccdf451f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

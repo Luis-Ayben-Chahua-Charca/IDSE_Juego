@@ -353,13 +353,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Combustible
       objectReference: {fileID: 0}
+    - target: {fileID: 5168182832588957853, guid: e3e1a831f99a77045a035c94c9309e87, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7430162694865981681, guid: e3e1a831f99a77045a035c94c9309e87, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.306738
       objectReference: {fileID: 0}
     - target: {fileID: 7430162694865981681, guid: e3e1a831f99a77045a035c94c9309e87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.08
+      value: 19.81
       objectReference: {fileID: 0}
     - target: {fileID: 7430162694865981681, guid: e3e1a831f99a77045a035c94c9309e87, type: 3}
       propertyPath: m_LocalPosition.z
@@ -520,11 +524,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6631645026603990232, guid: 04c832faca511d04f9ed8e10f5480966, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2503322452275963209, guid: 04c832faca511d04f9ed8e10f5480966, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 929999270}
   m_SourcePrefab: {fileID: 100100000, guid: 04c832faca511d04f9ed8e10f5480966, type: 3}
+--- !u!1 &929999269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2503322452275963209, guid: 04c832faca511d04f9ed8e10f5480966, type: 3}
+  m_PrefabInstance: {fileID: 929999268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &929999270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929999269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70df0f1f6d18116419133d7702b2adad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  culturaData: {fileID: 11400000, guid: 7a69387faf5c8ce4c806c3ff09344cbc, type: 2}
 --- !u!1001 &986527122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -687,7 +713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2030875810868697800, guid: 0e4aed42b68f00d44b5d3bdaa8be882a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.75
+      value: 6.48
       objectReference: {fileID: 0}
     - target: {fileID: 2030875810868697800, guid: 0e4aed42b68f00d44b5d3bdaa8be882a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1138,6 +1164,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3218810443744147630, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
+      propertyPath: nave
+      value: 
+      objectReference: {fileID: 7554287047036273790}
     - target: {fileID: 5786577592004792990, guid: 7230dfe8c1dce3d43bb6b0928382d8fc, type: 3}
       propertyPath: controlDeNave
       value: 
@@ -1620,10 +1650,6 @@ PrefabInstance:
       propertyPath: energia
       value: 
       objectReference: {fileID: 2049214934}
-    - target: {fileID: 1571507567746303490, guid: a84edc9dbc597cf41b5091479871d544, type: 3}
-      propertyPath: sonidoMuerte
-      value: 
-      objectReference: {fileID: 8300000, guid: 1fb53713aa433074084c6e9c581d77ae, type: 3}
     - target: {fileID: 4116738408034410992, guid: a84edc9dbc597cf41b5091479871d544, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.85
